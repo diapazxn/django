@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path, include  # <-- Не забудь додати include сюди!
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
