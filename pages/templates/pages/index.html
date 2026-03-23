@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-</head>
-<body>
-    <h1>{{ header_text }}</h1>
-    <p>{{ description }}</p>
-    <hr>
-    <a href="/about">Перейти на сторінку "Про нас"</a>
-</body>
-</html>
+{% extends 'pages/base.html' %}
+
+{% block content %}
+    <h2>Ласкаво просимо до Машини часу моди!</h2>
+    <p>Виберіть епоху (рік) у меню зверху, щоб зануритись у тренди та побачити головних ікон стилю того часу.</p>
+{% endblock content %}

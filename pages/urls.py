@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.home_view, name='home'),
-    path('about/', views.about_view, name='about'),
+    path('', views.index, name='home'),
+    # Цей шлях буде ловити ID року (наприклад, /era/1/)
+    path('era/<int:year_id>/', views.era_page, name='era_page'),
 ]

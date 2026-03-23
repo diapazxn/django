@@ -1,13 +1,30 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import FashionYear, Trend, StyleIcon
 
-def home_view(request):
-    # Словник data - це і є наш КОНТЕКСТ
-    data = {
-        'title': 'Моя Лаба 3',
-        'header_text': 'Вітаю на головній сторінці!',
-        'description': 'Цей текст був змінений за допомогою рендера та контекста.'
+
+# В'юшка для головної сторінки
+def index(request):
+    # Дістаємо всі роки з бази, щоб показати їх у меню (хедері)
+    years = FashionYear.objects.all()
+    return render(request, 'pages/index.html', {'years': years})
+
+
+# В'юшка для сторінки конкретної епохи
+def era_page(request, year_id):
+    years = FashionYear.objects.all()  # Знову дістаємо роки для меню
+
+    # Шукаємо конкретний рік по його ID
+    current_year = get_object_or_404(FashionYear, id=year_id)
+
+    # Шукаємо тренди та ікони стилю, які прив'язані саме до цього року
+    trends = Trend.objects.filter(fashion_year=current_year)
+    icons = StyleIcon.objects.filter(fashion_year=current_year)
+
+    # Пакуємо все в словник і передаємо в HTML
+    context = {
+        'years': years,
+        'current_year': current_year,
+        'trends': trends,
+        'icons': icons
     }
-    return render(request, 'pages/index.html', data)
-
-def about_view(request):
-    return render(request, 'pages/about.html')
+    return render(request, 'pages/era.html', context)
