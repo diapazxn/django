@@ -42,6 +42,10 @@ class StyleIcon(models.Model):
     fashion_year = models.ForeignKey(FashionYear, on_delete=models.CASCADE, verbose_name="Рік")
     outfit = models.TextField(verbose_name="Що одягнуто")
 
+    # НОВІ ПОЛЯ: Біографія та Фото
+    bio = models.TextField(verbose_name="Коротка біографія", blank=True, null=True)
+    photo = models.ImageField(upload_to='icons/', verbose_name="Фотографія", blank=True, null=True)
+
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Створено о")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Оновлено о")
 

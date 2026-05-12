@@ -33,11 +33,26 @@ nav a:hover {
     background: #e6005c;
 }
 
+/* Додай до body або main */
 main {
     padding: 20px;
     min-height: 70vh;
     max-width: 900px;
     margin: 0 auto;
+    word-wrap: break-word; /* Фікс: щоб текст не вилазив за межі екрану */
+    overflow-wrap: break-word; /* Фікс для нових браузерів */
+}
+
+/* Оновлений хедер (щоб помістилися підкатегорії) */
+nav { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
+.nav-category { color: #ff66a3; font-weight: bold; margin-right: 10px; }
+
+/* Стилі для фотографій та кнопки "Купити" */
+.icon-photo { max-width: 100%; border-radius: 8px; margin-bottom: 10px; }
+.btn-buy {
+    background-color: #333; color: white; padding: 10px 20px;
+    border: none; border-radius: 5px; cursor: not-allowed; opacity: 0.7;
+    font-size: 16px; margin-top: 10px; width: 100%;
 }
 
 footer {
@@ -55,4 +70,16 @@ footer {
     margin-bottom: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    /* 🔥 МАГІЯ ВІД ВИКЛАДАЧІВ: */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word; /* Примусово розриває суцільний текст без пробілів */
+    max-width: 100%; /* Забороняє картці розтягуватися ширше за екран */
+}
+/* Це застрахує всі заголовки і абзаци, де б він не ввів текст */
+p, h1, h2, h3, h4, div, span {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
 }

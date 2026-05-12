@@ -1,0 +1,38 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+    <!-- Кнопка назад до списку -->
+    <a href="/era/{{ icon.fashion_year.id }}/" style="text-decoration: none; color: #e6005c; font-weight: bold;">
+        ⬅ Повернутися до {{ icon.fashion_year.year }} року
+    </a>
+
+    <div class="card" style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 20px;">
+        <!-- Ліва колонка: Фотографія -->
+        <div style="flex: 1; min-width: 250px;">
+            {% if icon.photo %}
+                <img src="{{ icon.photo.url }}" class="icon-photo" style="width: 100%; border-radius: 8px; object-fit: cover;" alt="{{ icon.name }}">
+            {% else %}
+                <div style="background: #eee; padding: 50px; text-align: center; border-radius: 8px; height: 100%;">
+                    <p><i>Фото ще не завантажено</i></p>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Права колонка: Інформація та кнопка -->
+        <div style="flex: 2; min-width: 300px;">
+            <h2 style="margin-top: 0;">{{ icon.name }}</h2>
+            <p><strong>Епоха (Категорія):</strong> {{ icon.fashion_year.year }} рік</p>
+            <p><strong>Що одягнуто:</strong> {{ icon.outfit }}</p>
+
+            <hr style="border: 0; border-top: 1px solid #ddd; margin: 15px 0;">
+
+            <h3>Коротка біографія:</h3>
+            <p>{{ icon.bio|default:"Біографія ще не додана. Зайдіть в адмінку, щоб додати опис." }}</p>
+
+            <!-- Обов'язкова вимога 6 лаби: Неактивна кнопка "Купити" -->
+            <button class="btn-buy" disabled style="background-color: #555; color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: not-allowed; font-size: 16px; margin-top: 20px; width: 100%; font-weight: bold;">
+                🛍️ Додати в гардероб (Поки недоступно)
+            </button>
+        </div>
+    </div>
+{% endblock %}

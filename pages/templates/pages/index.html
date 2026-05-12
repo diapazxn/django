@@ -1,6 +1,16 @@
 {% extends 'pages/base.html' %}
-
 {% block content %}
     <h2>Ласкаво просимо до Машини часу моди!</h2>
-    <p>Виберіть епоху (рік) у меню зверху, щоб зануритись у тренди та побачити головних ікон стилю того часу.</p>
-{% endblock content %}
+    <p>Це проект, де історія стилю оживає. Виберіть епоху в меню вище, щоб дізнатися, що носили раніше.</p>
+
+    <h3>Доступні епохи (Категорії):</h3>
+    <div style="display: flex; gap: 20px;">
+    {% for y in years %}
+        <div class="card" style="width: 200px; text-align: center;">
+            <h3>{{ y.year }} рік</h3>
+            <p>{{ y.description|truncatewords:10 }}</p>
+            <a href="/era/{{ y.id }}/" style="color: blue; text-decoration: underline;">Дивитись тренди</a>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

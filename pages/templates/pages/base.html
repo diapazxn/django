@@ -23,8 +23,15 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Машина часу моди. Зроблено з ❤️.</p>
+        <p>&copy; 2026 Машина часу моди. Усі права захищені️. </p>
     </footer>
 
 </body>
 </html>
+<nav>
+    <a href="/">Головна</a>
+    <span class="nav-category">Категорії (Епохи):</span>
+    {% for y in years %}
+        <a href="/era/{{ y.id }}/">{{ y.year }}</a>
+    {% endfor %}
+</nav>

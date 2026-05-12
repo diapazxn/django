@@ -1,26 +1,19 @@
 {% extends 'pages/base.html' %}
-
 {% block content %}
     <h2>Епоха: {{ current_year.year }}</h2>
-    <p><i>{{ current_year.description }}</i></p>
 
-    <h3>🔥 Головні тренди:</h3>
-    {% for trend in trends %}
-        <div class="card">
-            <h4>{{ trend.title }}</h4>
-            <p>{{ trend.details }}</p>
-        </div>
-    {% empty %}
-        <p>Трендів для цього року поки немає.</p>
-    {% endfor %}
-
-    <h3>⭐ Ікони стилю:</h3>
+    <h3>⭐ Ікони стилю (Натисніть для деталей):</h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
     {% for icon in icons %}
-        <div class="card">
-            <h4>{{ icon.name }}</h4>
-            <p><strong>Що одягнуто:</strong> {{ icon.outfit }}</p>
+        <div class="card" style="width: 250px;">
+            {% if icon.photo %}
+                <img src="{{ icon.photo.url }}" class="icon-photo" alt="{{ icon.name }}">
+            {% endif %}
+            <h4><a href="/icon/{{ icon.id }}/">{{ icon.name }}</a></h4>
         </div>
     {% empty %}
         <p>Ікон стилю для цього року поки немає.</p>
     {% endfor %}
-{% endblock content %}
+    </div>
+    <!-- ...тут залишається твій код виводу трендів... -->
+{% endblock %}
